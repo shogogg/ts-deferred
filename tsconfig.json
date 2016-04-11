@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "files": [
+    "typings/main.d.ts",
+    "deferred.ts"
+  ]
+}

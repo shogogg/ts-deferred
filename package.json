@@ -1,0 +1,31 @@
+{
+  "name": "ts-deferred",
+  "version": "1.0.0",
+  "description": "Very simple implementation of Deferred for TypeScript",
+  "author": "shogogg <shogo@studiofly.net>",
+  "license": "MIT",
+  "main": "deferred.js",
+  "keywords": ["Deferred", "Promise", "TypeScript", "Async"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shogogg/ts-deferred.git"
+  },
+  "scripts": {
+    "postinstall": "typings install",
+    "build": "tsc",
+    "clean": "rimraf *.js *.d.ts",
+    "clean:all": "rimraf *.js *.d.ts node_modules typings",
+    "pretest": "npm run build",
+    "test": "mocha --reporter spec --compilers ts:espower-typescript/guess test/*.ts",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "es6-promise": "^3.1.2",
+    "espower-typescript": "^5.0.1",
+    "mocha": "^2.4.5",
+    "power-assert": "^1.3.1",
+    "rimraf": "^2.5.2",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.12"
+  }
+}
