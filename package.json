@@ -1,10 +1,11 @@
 {
   "name": "ts-deferred",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Very simple implementation of Deferred for TypeScript",
   "author": "shogogg <shogo@studiofly.net>",
   "license": "MIT",
   "main": "deferred.js",
+  "typings": "deferred.d.ts",
   "keywords": ["Deferred", "Promise", "TypeScript", "Async"],
   "repository": {
     "type": "git",
