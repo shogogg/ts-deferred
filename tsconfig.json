@@ -6,10 +6,10 @@
     "noImplicitAny": true,
     "removeComments": false,
     "moduleResolution": "node",
-    "sourceMap": true
+    "sourceMap": false
   },
   "files": [
-    "typings/main.d.ts",
-    "deferred.ts"
+    "typings/index.d.ts",
+    "index.ts"
   ]
 }

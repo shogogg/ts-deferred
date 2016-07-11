@@ -5,7 +5,7 @@
  * http://opensource.org/licenses/mit-license.php
  */
 import * as assert from "power-assert";
-import {Deferred} from "../deferred";
+import {Deferred} from "../index";
 
 describe('Deferred', () => {
 
