@@ -17,14 +17,16 @@
     "url": "https://github.com/shogogg/ts-deferred.git"
   },
   "scripts": {
-    "typings": "typings install",
     "build": "tsc",
     "clean": "rimraf *.js *.d.ts",
-    "clean:all": "rimraf *.js *.d.ts node_modules typings",
+    "clean:all": "rimraf *.js *.d.ts node_modules",
     "pretest": "npm run build",
     "test": "mocha --reporter spec --compilers ts:espower-typescript/guess"
   },
   "devDependencies": {
+    "@types/es6-shim": "0.0.31",
+    "@types/mocha": "^2.2.31",
+    "@types/sinon": "^1.16.29",
     "es6-promise": "^3.2.1",
     "espower-typescript": "^5.0.1",
     "mocha": "^2.5.3",

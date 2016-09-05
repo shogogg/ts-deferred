@@ -9,7 +9,7 @@
     "sourceMap": false
   },
   "files": [
-    "typings/index.d.ts",
+    "node_modules/@types/es6-shim/index.d.ts",
     "index.ts"
   ]
 }
