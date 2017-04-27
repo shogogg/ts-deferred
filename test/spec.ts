@@ -40,6 +40,14 @@ describe('Deferred', () => {
       });
     });
 
+    it('should be bound to the Deferred instance', () => {
+      let resolve = deferred.resolve;
+      resolve('Chai Maxx');
+      return deferred.promise.then((value: string) => {
+        assert(value === 'Chai Maxx');
+      });
+    });
+
   });
 
   describe('.reject', () => {
@@ -54,6 +62,14 @@ describe('Deferred', () => {
 
     it('should reject the promise with the reason', () => {
       deferred.reject('CONTRADICTION');
+      return deferred.promise.catch((reason: string) => {
+        assert(reason === 'CONTRADICTION');
+      });
+    });
+
+    it('should be bound to the Deferred instance', () => {
+      let reject = deferred.reject;
+      reject('CONTRADICTION');
       return deferred.promise.catch((reason: string) => {
         assert(reason === 'CONTRADICTION');
       });

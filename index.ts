@@ -21,11 +21,11 @@ export class Deferred<T> {
     return this._promise;
   }
 
-  resolve(value?: T | PromiseLike<T>): void {
+  resolve = (value?: T | PromiseLike<T>): void => {
     this._resolve(value);
   }
 
-  reject(reason?: any): void {
+  reject = (reason?: any): void => {
     this._reject(reason);
   }
 
