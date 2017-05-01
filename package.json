@@ -1,6 +1,6 @@
 {
   "name": "ts-deferred",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Very simple implementation of Deferred for TypeScript",
   "author": "shogogg <shogo@studiofly.net>",
   "license": "MIT",
