@@ -18,9 +18,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf *.js *.d.ts",
-    "clean:all": "rimraf *.js *.d.ts node_modules",
-    "test": "mocha --reporter spec --require espower-typescript/guess test/spec.ts"
+    "clean": "rimraf index.js index.d.ts",
+    "clean:all": "rimraf index.js index.d.ts node_modules",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
