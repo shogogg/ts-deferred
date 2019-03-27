@@ -4,8 +4,9 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-import * as assert from "power-assert";
-import {Deferred} from "../index";
+import { Deferred } from '../index'
+
+const assert = require('assert')
 
 describe('Deferred', () => {
 

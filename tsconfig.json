@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2015.promise"],
     "declaration": true,
     "noImplicitAny": true,
     "removeComments": false,
     "moduleResolution": "node",
-    "sourceMap": false
+    "sourceMap": false,
+    "types": [
+      "mocha",
+      "node"
+    ]
   },
   "files": [
-    "node_modules/@types/es6-shim/index.d.ts",
     "index.ts"
   ]
 }

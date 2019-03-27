@@ -7,3 +7,4 @@ tsconfig.json
 typings
 typings.json
 *.js.map
+yarn.lock
