@@ -3,5 +3,6 @@
 node_modules
 typings
 *.js
+!jest.config.js
 *.js.map
 *.d.ts

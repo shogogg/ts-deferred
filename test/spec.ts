@@ -6,8 +6,6 @@
  */
 import { Deferred } from '../index'
 
-const assert = require('assert')
-
 describe('Deferred', () => {
 
   let deferred: Deferred<string>
@@ -17,36 +15,32 @@ describe('Deferred', () => {
   })
 
   it('should be a function', () => {
-    assert(typeof Deferred === 'function')
+    expect(typeof Deferred).toBe('function')
   })
 
   it('should returns Deferred instance when called with new', () => {
-    assert(new Deferred() instanceof Deferred)
+    expect(new Deferred()).toBeInstanceOf(Deferred)
   })
 
   describe('.resolve', () => {
 
     it('should be a function', () => {
-      assert(typeof deferred.resolve === 'function')
+      expect(typeof deferred.resolve).toBe('function')
     })
 
     it('should returns void', () => {
-      assert(deferred.resolve() === undefined)
+      expect(deferred.resolve()).toBe(undefined)
     })
 
-    it('should resolve the promise using given value', () => {
+    it('should resolve the promise using given value', async () => {
       deferred.resolve('Chai Maxx')
-      return deferred.promise.then((value: string) => {
-        assert(value === 'Chai Maxx')
-      })
+      expect(await deferred.promise).toBe('Chai Maxx')
     })
 
-    it('should be bound to the Deferred instance', () => {
+    it('should be bound to the Deferred instance', async () => {
       let resolve = deferred.resolve
-      resolve('Chai Maxx')
-      return deferred.promise.then((value: string) => {
-        assert(value === 'Chai Maxx')
-      })
+      resolve('Chai Maxx ZERO')
+      expect(await deferred.promise).toBe('Chai Maxx ZERO')
     })
 
   })
@@ -54,28 +48,36 @@ describe('Deferred', () => {
   describe('.reject', () => {
 
     it('should be a function', () => {
-      assert(typeof deferred.reject === 'function')
+      expect(typeof deferred.reject).toBe('function')
     })
 
     it('should returns void', () => {
       try {} catch {
-        assert(deferred.reject() === undefined)
+        expect(deferred.reject()).toBe(undefined)
       }
     })
 
-    it('should reject the promise with the reason', () => {
-      deferred.reject('CONTRADICTION')
-      return deferred.promise.catch((reason: string) => {
-        assert(reason === 'CONTRADICTION')
-      })
+    it('should reject the promise with the reason', async () => {
+      let reason: any
+      try {
+        deferred.reject('CONTRADICTION')
+        await deferred.promise
+      } catch (thrown) {
+        reason = thrown
+      }
+      expect(reason).toBe('CONTRADICTION')
     })
 
-    it('should be bound to the Deferred instance', () => {
-      let reject = deferred.reject
-      reject('CONTRADICTION')
-      return deferred.promise.catch((reason: string) => {
-        assert(reason === 'CONTRADICTION')
-      })
+    it('should be bound to the Deferred instance', async () => {
+      let reason: any
+      try {
+        let reject = deferred.reject
+        reject('Yum-Yum!')
+        await deferred.promise
+      } catch (thrown) {
+        reason = thrown
+      }
+      expect(reason).toBe('Yum-Yum!')
     })
 
   })
@@ -83,20 +85,20 @@ describe('Deferred', () => {
   describe('.promise', () => {
 
     it('should be an instance of Promise', () => {
-      assert(deferred.promise instanceof Promise)
+      expect(deferred.promise).toBeInstanceOf(Promise)
     })
 
-    it('should be resolved with a value when `.resolve()` is called with the value', () => {
+    it('should be resolved with a value when `.resolve()` is called with the value', async () => {
       deferred.resolve('Momoiro Clover Z')
-      return deferred.promise.then((value: string) => {
-        assert(value === 'Momoiro Clover Z')
+      await deferred.promise.then((value: string) => {
+        expect(value).toBe('Momoiro Clover Z')
       })
     })
 
-    it('should be rejected with a reason when `.reject()` is called with the reason', () => {
+    it('should be rejected with a reason when `.reject()` is called with the reason', async () => {
       deferred.reject('Some Error')
-      return deferred.promise.catch((reason: string) => {
-        assert(reason, 'Some Error')
+      await deferred.promise.catch((reason: string) => {
+        expect(reason).toBe('Some Error')
       })
     })
 
