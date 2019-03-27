@@ -14,6 +14,10 @@ describe('Deferred', () => {
     deferred = new Deferred<string>()
   })
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should be a function', () => {
     expect(typeof Deferred).toBe('function')
   })
@@ -43,6 +47,12 @@ describe('Deferred', () => {
       expect(await deferred.promise).toBe('Chai Maxx ZERO')
     })
 
+    it('should be mock function when using jest.spyOn', () => {
+      const mock = jest.spyOn(deferred, 'resolve')
+      deferred.resolve('DECORATION')
+      expect(mock).toBeCalledWith('DECORATION')
+    })
+
   })
 
   describe('.reject', () => {
@@ -52,9 +62,8 @@ describe('Deferred', () => {
     })
 
     it('should returns void', () => {
-      try {} catch {
-        expect(deferred.reject()).toBe(undefined)
-      }
+      deferred.promise.catch(() => {})
+      expect(deferred.reject()).toBe(undefined)
     })
 
     it('should reject the promise with the reason', async () => {
@@ -78,6 +87,13 @@ describe('Deferred', () => {
         reason = thrown
       }
       expect(reason).toBe('Yum-Yum!')
+    })
+
+    it('should be mock function when using jest.spyOn', () => {
+      const mock = jest.spyOn(deferred, 'reject')
+      deferred.promise.catch(() => {})
+      deferred.reject('GODSPEED')
+      expect(mock).toBeCalledWith('GODSPEED')
     })
 
   })

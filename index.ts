@@ -6,7 +6,7 @@
  */
 export class Deferred<T> {
 
-  private _promise: Promise<T>
+  private readonly _promise: Promise<T>
   private _resolve: (value?: T | PromiseLike<T>) => void
   private _reject: (reason?: any) => void
 
