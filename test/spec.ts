@@ -58,7 +58,9 @@ describe('Deferred', () => {
     })
 
     it('should returns void', () => {
-      assert(deferred.reject() === undefined)
+      try {} catch {
+        assert(deferred.reject() === undefined)
+      }
     })
 
     it('should reject the promise with the reason', () => {
