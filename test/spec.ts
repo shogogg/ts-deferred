@@ -10,94 +10,94 @@ const assert = require('assert')
 
 describe('Deferred', () => {
 
-  let deferred: Deferred<string>;
+  let deferred: Deferred<string>
 
   beforeEach(() => {
-    deferred = new Deferred<string>();
-  });
+    deferred = new Deferred<string>()
+  })
 
   it('should be a function', () => {
-    assert(typeof Deferred === 'function');
-  });
+    assert(typeof Deferred === 'function')
+  })
 
   it('should returns Deferred instance when called with new', () => {
-    assert(new Deferred() instanceof Deferred);
-  });
+    assert(new Deferred() instanceof Deferred)
+  })
 
   describe('.resolve', () => {
 
     it('should be a function', () => {
-      assert(typeof deferred.resolve === 'function');
-    });
+      assert(typeof deferred.resolve === 'function')
+    })
 
     it('should returns void', () => {
-      assert(deferred.resolve() === undefined);
-    });
+      assert(deferred.resolve() === undefined)
+    })
 
     it('should resolve the promise using given value', () => {
-      deferred.resolve('Chai Maxx');
+      deferred.resolve('Chai Maxx')
       return deferred.promise.then((value: string) => {
-        assert(value === 'Chai Maxx');
-      });
-    });
+        assert(value === 'Chai Maxx')
+      })
+    })
 
     it('should be bound to the Deferred instance', () => {
-      let resolve = deferred.resolve;
-      resolve('Chai Maxx');
+      let resolve = deferred.resolve
+      resolve('Chai Maxx')
       return deferred.promise.then((value: string) => {
-        assert(value === 'Chai Maxx');
-      });
-    });
+        assert(value === 'Chai Maxx')
+      })
+    })
 
-  });
+  })
 
   describe('.reject', () => {
 
     it('should be a function', () => {
-      assert(typeof deferred.reject === 'function');
-    });
+      assert(typeof deferred.reject === 'function')
+    })
 
     it('should returns void', () => {
-      assert(deferred.reject() === undefined);
-    });
+      assert(deferred.reject() === undefined)
+    })
 
     it('should reject the promise with the reason', () => {
-      deferred.reject('CONTRADICTION');
+      deferred.reject('CONTRADICTION')
       return deferred.promise.catch((reason: string) => {
-        assert(reason === 'CONTRADICTION');
-      });
-    });
+        assert(reason === 'CONTRADICTION')
+      })
+    })
 
     it('should be bound to the Deferred instance', () => {
-      let reject = deferred.reject;
-      reject('CONTRADICTION');
+      let reject = deferred.reject
+      reject('CONTRADICTION')
       return deferred.promise.catch((reason: string) => {
-        assert(reason === 'CONTRADICTION');
-      });
-    });
+        assert(reason === 'CONTRADICTION')
+      })
+    })
 
-  });
+  })
 
   describe('.promise', () => {
 
     it('should be an instance of Promise', () => {
-      assert(deferred.promise instanceof Promise);
-    });
+      assert(deferred.promise instanceof Promise)
+    })
 
     it('should be resolved with a value when `.resolve()` is called with the value', () => {
-      deferred.resolve('Momoiro Clover Z');
+      deferred.resolve('Momoiro Clover Z')
       return deferred.promise.then((value: string) => {
-        assert(value === 'Momoiro Clover Z');
-      });
-    });
+        assert(value === 'Momoiro Clover Z')
+      })
+    })
 
     it('should be rejected with a reason when `.reject()` is called with the reason', () => {
-      deferred.reject('Some Error');
+      deferred.reject('Some Error')
       return deferred.promise.catch((reason: string) => {
-        assert(reason, 'Some Error');
-      });
-    });
+        assert(reason, 'Some Error')
+      })
+    })
 
-  });
+  })
 
-});
+})
